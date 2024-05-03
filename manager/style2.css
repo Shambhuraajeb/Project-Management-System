@@ -1,0 +1,134 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #1f2029;
+    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg');
+    color: #34495e;
+    /* Darker text color */
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+
+main {
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.nav1 {
+    width: 250px;
+    background-color: rgb(37, 62, 73);
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeInLeft 0.5s ease-out;
+}
+
+.nav1 a {
+    text-decoration: none;
+    color: #ffffff;
+    display: block;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: rgb(22, 39, 46);
+}
+
+section {
+    flex: 1;
+    padding: 10px;
+}
+
+.card {
+    background-color: rgb(37, 62, 73);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    animation: fadeInUp 0.5s ease-out;
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-4px);
+}
+
+h2 {
+    color: white;
+}
+
+/* Additional Styling for Cards */
+.card-header {
+
+    color: #ffffff;
+    border-radius: 10px 10px 0 0;
+    padding: 10px;
+}
+
+.card-body {
+    color: #34495e;
+    /* Darker text color */
+}
+
+/* Styling for Buttons */
+.btn-primary {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-color: #00bcd4;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #008ba3;
+    border-color: #008ba3;
+}
+
+/* Logo */
+.logo img {
+    width: 100px;
+    height: auto;
+    border-radius: 50%;
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
