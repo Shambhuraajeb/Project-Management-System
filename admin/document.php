@@ -132,7 +132,7 @@ $user = $_SESSION['email'];
                     <table class="table table-bordered table-dark">
                         <thead>
                             <tr>
-                                <th scope="col">Document ID</th>
+                                <th scope="col">ID</th>
                                 <th scope="col">Document Name</th>
                                 <th scope="col">location</th>
                                 <th scope="col">DateTime</th>

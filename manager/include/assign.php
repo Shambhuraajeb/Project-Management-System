@@ -10,12 +10,38 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            letter-spacing: 0.5px;
+        }
+
+        h2,
+        h4 {
+            color: #333;
+        }
+
         .container1 {
             margin-top: 20px;
             border: 1px solid #ccc;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(to right, #ffffff, #f2f3f5);
+        }
+
+        .btn-info {
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .btn-info:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .container1 {
+                padding: 15px;
+            }
         }
     </style>
 </head>
@@ -25,7 +51,7 @@
 
     <?php
     // Include database configuration file
-    include('config.php');
+    include ('config.php');
 
     // Check if the form was submitted
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {

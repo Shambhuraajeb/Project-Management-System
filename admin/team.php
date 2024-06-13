@@ -223,7 +223,7 @@ $user = $_SESSION['email'];
                                 multiple>
                                 
                                 <?php
-                                $sql = "SELECT employee.emp_id,employee.name FROM `employee`";
+                                $sql = "SELECT employee.emp_id,employee.name FROM `employee` where employee.role='employee'";
                                 if ($result = mysqli_query($conn, $sql)) {
                                     if (mysqli_num_rows($result) > 0) {
                                         for ($i = 0; $i <= 29; $i++) {

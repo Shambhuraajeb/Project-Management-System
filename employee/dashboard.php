@@ -1,19 +1,27 @@
 <?php
 session_start();
 $user = $_SESSION['email'];
+
+include "include/config.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Management Dashboard</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style2.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 
     <style>
         body {
@@ -45,14 +53,25 @@ $user = $_SESSION['email'];
         <h1 style="color: white;">Dashboard</h1>
     </nav>
 
+
     <main>
+        <?php
+        $q = "SELECT COUNT(*) FROM notify_user INNER JOIN employee on notify_user.user_id=employee.emp_id WHERE employee.email='$user' AND isread=0;";
+        $count = 0;
+
+        if ($res = mysqli_query($conn, $q)) {
+            $row = mysqli_fetch_array($res);
+            $count = $row[0];
+            mysqli_free_result($res);
+        }
+        ?>
         <nav class="nav1">
-            <a href="dashboard.html" class="text-white">Dashboard</a>
+            <a href="dashboard.php" class="text-white">Dashboard</a>
             <a href="task.php" class="text-white">Tasks</a>
             <a href="document.php" class="text-white">Document</a>
+            <a href="notification.php" class="text-white">Notification</a>
             <a href="report.php" class="text-white">Reports</a>
         </nav>
-
         <section>
             <div class="card">
                 <h2>Welcome to Your Dashboard</h2>
@@ -73,7 +92,7 @@ $user = $_SESSION['email'];
                     } else {
                         echo "Session variable 'username' not set." . $user;
                     }
-                    include "include/config.php";
+
                     $sql = "SELECT employee.email,task.name FROM `task` INNER JOIN task_assign on task.task_id=task_assign.task_id INNER JOIN employee on task_assign.emp_id=employee.emp_id where employee.email='$user'";
 
                     if ($result = mysqli_query($conn, $sql)) {
@@ -136,6 +155,10 @@ $user = $_SESSION['email'];
             </div>
         </section>
     </main>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

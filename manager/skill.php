@@ -126,7 +126,14 @@ $user = $_SESSION['email'];
         <div class="container">
             <div class="dashboard-content">
                 <h4>Project Information</h4>
-                
+                <button class="btn btn-info" data-toggle="modal" data-target="#addSkill">Add Skill Set</button>
+                <button class="btn btn-info" onclick="addSkill()">Add Employee Skill</button>
+                <script>
+                    function addSkill() {
+                        window.location = "include/addEmployeeSkill.php";
+                    }
+                </script>
+
                 <div class="table-responsive">
                     <table class="table table-bordered table-dark">
                         <thead>
@@ -149,11 +156,11 @@ $user = $_SESSION['email'];
                                         if ($row !== null) {
                                             ?>
                                             <tr>
-                                                <td><?php echo $i+1; ?></td>
+                                                <td><?php echo $i + 1; ?></td>
                                                 <td><?php echo $row[0]; ?></td>
                                                 <td><?php echo $row[1]; ?></td>
                                                 <td><button class="btn btn-danger">Delete</button></td>
-                                                
+
                                             </tr>
                                             <?php
                                         }
@@ -168,7 +175,29 @@ $user = $_SESSION['email'];
         </div>
     </main>
 
-  
+    <div class="modal fade" id="addSkill" tabindex="-1" role="dialog" aria-labelledby="addProjectModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addProjectModalLabel">Add Skill set</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="include/addSkill.php" method="post">
+                        <b><label for="skill">Skill Name:</label></b>
+                        <input type="text" id="skill" name="skill" class="form-control" required><br>
+                        <button type="submit" name="submit" class="btn btn-primary">Add Skill</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
 
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

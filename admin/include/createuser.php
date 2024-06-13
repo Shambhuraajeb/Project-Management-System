@@ -1,4 +1,5 @@
 <?php
+
 if (isset($_POST['submit'])) {
     include ('config.php');
 
@@ -15,22 +16,24 @@ if (isset($_POST['submit'])) {
         $pass .= $characters[rand(0, $charLength)];
     }
 
-    // Construct the SQL query
-    $sql = "INSERT INTO `user`(`email`, `pass`, `emp_id`) VALUES ('$email','$pass','$id')";
+    try {
 
-    // Execute the query
-    $result = mysqli_query($conn, $sql);
+        $sql = "INSERT INTO `user`(`email`, `pass`, `emp_id`) VALUES ('$email','$pass','$id')";
 
-    // Check if the query was successful
-    if ($result) {
-        $message = 'User ID created successfully';
-        echo "<script type='text/javascript'>alert('$message');window.location.href='/project/admin/employee.php';</script>";
-    } else {
-        $message = 'Something went wrong.';
-        echo "<script type='text/javascript'>alert('$message');window.location.href='/project/admin/employee.php';</script>";
+        $result = mysqli_query($conn, $sql);
+
+        if ($result) {
+            $message = 'User ID created successfully. Login credentials sent to user.';
+            echo "<script type='text/javascript'>alert('$message');window.location.href='/project/admin/employee.php';</script>";
+        } else {
+            $message = 'Failed to insert user into the database.';
+           // echo "<script type='text/javascript'>alert('$message');window.location.href='/project/admin/employee.php';</script>";
+        }
+    } catch (Exception $e) {
+        $message = 'Exception: ' . $e->getMessage();
+        //echo "<script type='text/javascript'>alert('$message');window.location.href='/project/admin/employee.php';</script>";
     }
 
-    // Close the connection
     mysqli_close($conn);
 }
 ?>

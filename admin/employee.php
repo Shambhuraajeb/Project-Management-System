@@ -235,6 +235,15 @@ $user = $_SESSION['email'];
                             <input type="text" name="email" class="form-control" placeholder="Enter employee email">
                         </div>
                         <div class="form-group">
+                            <label for="projectName">Gender</label>
+                            <select name="gen" class="form-select" aria-label="Default select example">
+                                <option selected>Select gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="projectName">Resume</label>
                             <input type="file" name="resume" class="form-control" placeholder="Enter employee resume">
                         </div>

@@ -48,11 +48,13 @@ $user = $_SESSION['email'];
 
     <main>
         <nav class="nav1">
-            <a href="dashboard.html" class="text-white">Dashboard</a>
+            <a href="dashboard.php" class="text-white">Dashboard</a>
+            <a href="notification.php" class="text-white">Notification</a>
             <a href="project.php" class="text-white">Projects</a>
             <a href="task.php" class="text-white">Tasks</a>
             <a href="team.php" class="text-white">Team</a>
-            <a href="skill.php" class="text-white">Skill</a>
+            <a href="meeting.php" class="text-white">Meetings</a>
+            <a href="skill.php" class="text-white">Employee Skill</a>
         </nav>
 
         <section>
@@ -102,7 +104,7 @@ $user = $_SESSION['email'];
                 <div class="card-body">
                     <?php
                     include "include/config.php";
-                    $sql = "SELECT task.name,task.description,task.start_time,task.end_time,task_assign.status,employee.name FROM `task` INNER JOIN task_assign ON task_assign.task_id=task.task_id INNER JOIN employee on task_assign.emp_id=employee.emp_id";
+                    $sql = "SELECT task.name,task.description,task.start_time,task.end_time,task_assign.status,employee.name,employee.gender FROM `task` INNER JOIN task_assign ON task_assign.task_id=task.task_id INNER JOIN employee on task_assign.emp_id=employee.emp_id";
 
                     if ($result = mysqli_query($conn, $sql)) {
                         if (mysqli_num_rows($result) > 0) {
@@ -116,7 +118,8 @@ $user = $_SESSION['email'];
                                     <i>
                                         <p><?php echo $row[1]; ?></p>
                                         <p>(<?php echo $row[2]; ?>-<?php echo $row[3]; ?>)</p>
-                                        <b>Name: <?php echo strtoupper($row[5]); ?></b>
+                                        <?php $prefix = ($row['gender'] == "male") ? "Mr." : "Mrs."; ?>
+                                        <p> Name: <b><?php echo $prefix ." ". ucfirst($row[5]); ?></b></p>
                                     </i><br><br><br>
                                     <?php
                                 }

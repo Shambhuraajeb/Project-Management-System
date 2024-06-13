@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['email'])) {
-    $message = 'You are not logged in. Please login to access this page.'. $email;
+    $message = 'You are not logged in. Please login to access this page.' . $email;
     echo "<script type='text/javascript'>alert('$message'); window.location='/project/index.php'</script>";
     exit();
 }
@@ -41,7 +41,8 @@ $user = $_SESSION['email'];
 
     <main>
         <nav class="nav1">
-            <a href="dashboard.html" class="text-white">Dashboard</a>
+            <a href="dashboard.php" class="text-white">Dashboard</a>
+            <a href="notification.php" class="text-white">Notification</a>
             <a href="project.php" class="text-white">Projects</a>
             <a href="task.php" class="text-white">Tasks</a>
             <a href="team.php" class="text-white">Team</a>
@@ -56,7 +57,13 @@ $user = $_SESSION['email'];
             <div class="card">
                 <h2>Welcome to Your Dashboard</h2>
                 <p class="text-muted">Here you can manage your projects, tasks, and team efficiently.</p>
-                <button class="btn btn-primary">Get Started</button>
+                <button class="btn btn-primary" onclick="click1()">Get
+                    Started</button>
+                <script>
+                    function click1() {
+                        window.location.href = 'select_report.php';
+                    }
+                </script>
             </div>
 
             <div class="card">
@@ -66,7 +73,7 @@ $user = $_SESSION['email'];
                 <div class="card-body">
                     <?php
                     echo "<h2>$user</h2>";
-                    
+
                     include "include/config.php";
                     $sql = "SELECT employee.email,task.name FROM `task` INNER JOIN task_assign ON task.task_id=task_assign.task_id INNER JOIN employee on task_assign.emp_id=employee.emp_id";
 

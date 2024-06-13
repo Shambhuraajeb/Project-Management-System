@@ -153,10 +153,23 @@ if (isset($_SESSION['email'])) {
                                         if ($row !== null) {
                                             ?>
                                             <tr>
-                                                <td><?php echo $row[0]; ?></td>
-                                                <td><?php echo $row[1]; ?></td>
-                                                <td><?php echo $row[2]; ?>-<?php echo $row[3]; ?></td>
-                                                <td><?php echo $row[5]; ?></td>
+                                                <?php
+                                                if ($row[5] == "cancel") {
+                                                    ?>
+                                                    <s><td><?php echo $row[0]; ?></td></s>
+                                                    <s></s><td><?php echo $row[1]; ?></td></s>
+                                                    <s></s><td><?php echo $row[2]; ?>-<?php echo $row[3]; ?></td></s>
+                                                    <s></s><td><?php echo $row[5]; ?></td></s>
+                                                    <?php
+                                                } else {
+                                                    ?>
+                                                    <td><?php echo $row[0]; ?></td>
+                                                    <td><?php echo $row[1]; ?></td>
+                                                    <td><?php echo $row[2]; ?>-<?php echo $row[3]; ?></td>
+                                                    <td><?php echo $row[5]; ?></td>
+                                                    <?php
+                                                }
+                                                ?>
                                                 <td style="display: flex;">
                                                     <?php
                                                     if ($row[5] == "ongoing") {
@@ -187,8 +200,7 @@ if (isset($_SESSION['email'])) {
                                                         ?>
                                                                             <form action="include/starttask.php" method="post">
                                                                                 <input type="hidden" name="id" value="<?php echo $row[0]; ?>">
-                                                                                <button type="submit" name="submit"
-                                                                                    class="btn btn-info btn-sm">Start</button>
+                                                                                <button type="submit" name="submit" class="btn btn-info btn-sm">Start</button>
                                                                             </form>
                                                         <?php
                                                     }

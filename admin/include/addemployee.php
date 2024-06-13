@@ -5,11 +5,12 @@ if (isset($_POST['submit'])) {
     $nm = $_POST['nm'];
     $role = $_POST['role'];
     $email = $_POST['email'];
+    $gen = $_POST['gen'];
     $resume = $_POST['resume'];
 
     // Construct the SQL query
-    $sql = "INSERT INTO `employee`(`name`, `role`, `email`, `resume`) 
-            VALUES ('$nm', '$role', '$email', '$resume')";
+    $sql = "INSERT INTO `employee`(`name`, `role`, `email`, `resume`,`gender`) 
+            VALUES ('$nm', '$role', '$email', '$resume','$gen')";
     
     // Execute the query
     $result = mysqli_query($conn, $sql);

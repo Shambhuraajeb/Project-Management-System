@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 
@@ -19,7 +18,7 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color:rgb(37, 62, 73)">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:rgb(37, 62, 73)">
         <div class="logo">
             <img src="logo.webp" alt="Logo">
         </div>
@@ -28,23 +27,21 @@
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="dashboard.php">Dashboard</a>
                 </li>
-                
+
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="task.php">Tasks</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="team.php">Team</a>
                 </li>
                 
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="#">Reports</a>
                 </li>
+                
             </ul>
         </div>
         </div>
-        
+
         </ul>
-        
+
     </nav>
 </body>
 
